@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { User } from "./user.entity";
 import { UserService } from "./user.service";
 @Controller('users')
@@ -18,6 +18,11 @@ export class UserController{
         console.log('Update #' + userData.id_cliente)
         return this.userservice.updateUser(userData);
     }
+    @Delete(':id/delete')
+    async delete(@Param('id') id):Promise<any>{
+        return this.userservice.deleteUser(id);
+    }
+
 
 
 }
